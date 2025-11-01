@@ -39,3 +39,10 @@ Route::get('/users', function () {
        'city'=> 'gujranwala'
     ]);
 });
+
+
+
+
+Route::get('/create-post', function () {
+    return view('create-post');
+});
