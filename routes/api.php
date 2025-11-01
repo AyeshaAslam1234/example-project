@@ -13,3 +13,4 @@ Route::post('logout',[AuthController::class , 'logout'])->middleware('auth:sanct
 
 
 Route::post('/create-post', [PostController::class, 'store']);
+Route::get('/posts', [PostController::class, 'index']);

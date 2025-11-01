@@ -26,4 +26,12 @@ class PostController extends Controller
             'post' => $post,
         ]);
     }
+
+    public function index()
+{
+    $posts = Post::latest()->get();
+
+    return response()->json($posts);
+}
+
 }
