@@ -43,7 +43,7 @@ Route::get('/users', function () {
 
 
 Route::get('/create-post', function () {
-    return view('create_post');
+    return view('create-post');
 })->name('create.post');
 Route::get('/show-posts', function () {
     return view('show_posts');
