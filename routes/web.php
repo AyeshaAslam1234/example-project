@@ -42,10 +42,9 @@ Route::get('/users', function () {
 
 
 
-
 Route::get('/create-post', function () {
-    return view('create-post');
-});
+    return view('create_post');
+})->name('create.post');
 Route::get('/show-posts', function () {
     return view('show_posts');
 })->name('show.posts');

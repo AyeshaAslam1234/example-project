@@ -11,7 +11,7 @@
     <h2 class="mb-4">All Posts</h2>
     <ul id="postsList"></ul>
 
-    <a href="{{ route('create.page') }}" class="btn btn-secondary mt-3">Back to Create Post</a>
+    <a href="{{ route('create.post') }}" class="btn btn-secondary mt-3">Back to Create Post</a>
 </div>
 
 <script>
