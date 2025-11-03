@@ -14,7 +14,7 @@ class Post extends Model
         'body',
     ];
 
-     // Optional: define what fields Scout should index
+     
     public function toSearchableArray()
     {
         return [

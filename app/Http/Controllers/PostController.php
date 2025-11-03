@@ -34,20 +34,20 @@ class PostController extends Controller
         return response()->json($posts);
     }
 
-public function search(Request $request)
-{
-    $query = $request->input('query');
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
 
-    // If no query, return all posts
-    if (!$query) {
-        return response()->json(Post::latest()->get());
+        
+        if (!$query) {
+            return response()->json(Post::latest()->get());
+        }
+
+        
+        $posts = Post::search($query)->get();
+
+        return response()->json($posts);
     }
-
-    // Perform Scout search
-    $posts = Post::search($query)->get();
-
-    return response()->json($posts);
-}
 
 
 }
