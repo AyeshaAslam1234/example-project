@@ -27,45 +27,10 @@
 
     <div id="message" class="mt-4"></div>
 
-    <hr>
-    <h3>All Posts</h3>
-    <ul id="postsList"></ul>
+    <a href="{{ route('posts.page') }}" class="btn btn-secondary mt-3">View All Posts</a>
 </div>
 
 <script>
-async function loadPosts() {
-    try {
-        const response = await fetch('/api/posts');
-        if (!response.ok) throw new Error('Failed to load posts');
-        const posts = await response.json();
-
-        const list = document.getElementById('postsList');
-        list.innerHTML = '';
-
-        if (posts.length === 0) {
-            list.innerHTML = '<li>No posts found.</li>';
-            return;
-        }
-
-        posts.forEach(post => {
-            list.innerHTML += `
-                <li>
-                    <strong>${post.title}</strong><br>
-                    <small>${post.body ?? ''}</small>
-                </li>
-                <hr>
-            `;
-        });
-    } catch (error) {
-        console.error(error);
-        document.getElementById('postsList').innerHTML =
-            '<li class="text-danger">Error loading posts.</li>';
-    }
-}
-
-// Load posts on page load
-loadPosts();
-
 document.getElementById('postForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -81,7 +46,6 @@ document.getElementById('postForm').addEventListener('submit', async function (e
             document.getElementById('message').innerHTML =
                 '<div class="alert alert-success">Post created successfully!</div>';
             this.reset();
-            loadPosts(); // refresh list
         } else {
             document.getElementById('message').innerHTML =
                 '<div class="alert alert-danger">Error creating post!</div>';
@@ -94,5 +58,3 @@ document.getElementById('postForm').addEventListener('submit', async function (e
 </script>
 </body>
 </html>
-
- 

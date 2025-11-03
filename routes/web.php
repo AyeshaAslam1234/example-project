@@ -46,3 +46,6 @@ Route::get('/users', function () {
 Route::get('/create-post', function () {
     return view('create-post');
 });
+Route::get('/show-posts', function () {
+    return view('show_posts');
+})->name('posts.page');
