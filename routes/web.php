@@ -48,4 +48,4 @@ Route::get('/create-post', function () {
 });
 Route::get('/show-posts', function () {
     return view('show_posts');
-})->name('posts.page');
+})->name('show.posts');

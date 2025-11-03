@@ -26,8 +26,9 @@
     </form>
 
     <div id="message" class="mt-4"></div>
+    
+<a href="{{ route('show.posts') }}" class="btn btn-secondary mt-3">View All Posts</a>
 
-    <a href="{{ route('posts.page') }}" class="btn btn-secondary mt-3">View All Posts</a>
 </div>
 
 <script>
