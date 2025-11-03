@@ -9,16 +9,19 @@
 <body class="p-5 bg-light">
 <div class="container">
     <h2 class="mb-4">All Posts</h2>
+
+    <input type="text" id="search" class="form-control mb-3" placeholder="Search posts...">
+
     <ul id="postsList"></ul>
 
-    <a href="{{ route('create.post') }}" class="btn btn-secondary mt-3">Back to Create Post</a>
+     <a href="{{ route('create.post') }}" class="btn btn-secondary mt-3">Back to Create Post</a>
 </div>
 
 <script>
-async function loadPosts() {
+async function loadPosts(query = '') {
     try {
-        const response = await fetch('/api/posts');
-        if (!response.ok) throw new Error('Failed to load posts');
+        const url = query ? `/api/search-posts?query=${encodeURIComponent(query)}` : '/api/posts';
+        const response = await fetch(url);
         const posts = await response.json();
 
         const list = document.getElementById('postsList');
@@ -39,13 +42,19 @@ async function loadPosts() {
             `;
         });
     } catch (error) {
+        console.error(error);
         document.getElementById('postsList').innerHTML =
             '<li class="text-danger">Error loading posts.</li>';
     }
 }
 
-// Load posts on page load
+document.getElementById('search').addEventListener('keyup', function() {
+    loadPosts(this.value);
+});
+
+// Load all posts initially
 loadPosts();
 </script>
+
 </body>
 </html>
